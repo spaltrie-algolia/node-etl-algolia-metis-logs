@@ -5,7 +5,7 @@ import { writeXlsx } from './load.js'
 const spacePad = (num, places) => String(num).padStart(places, ' ')
 
 const FILES = [
-   './sources/extract-2024-04-04T17_59_53.297Z.csv',
+   './csv_files/extract-2024-04-04T17_59_53.297Z.csv',
 ];
 
 const orchestrateEtlPipeline = async () => {
@@ -42,15 +42,6 @@ const orchestrateEtlPipeline = async () => {
          if (!map[item.appID]) {
             map[item.appID] = {}
          }
-         // if (!map[item.appID][item.jobID]) {
-         //    map[item.appID][item.jobID] = {}
-         // }
-         // if (!map[item.appID][item.jobID][eventDateBucket15MinS]) {
-         //    map[item.appID][item.jobID][eventDateBucket15MinS] = item.durationInSec;
-         // }
-         // if (map[item.appID][item.jobID][eventDateBucket15MinS] > item.durationInSec) {
-         //    map[item.appID][item.jobID][eventDateBucket15MinS] = item.durationInSec;
-         // }
          if (!map[item.appID][eventDateBucket15MinS]) {
             map[item.appID][eventDateBucket15MinS] = item.durationInSec;
          }
