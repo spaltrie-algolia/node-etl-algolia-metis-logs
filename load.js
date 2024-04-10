@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-async function writeXlsx(map) {
+async function writeXlsx(filename, map) {
    console.log(map);
 
    const schema = [
@@ -40,7 +40,7 @@ async function writeXlsx(map) {
 
    await writeXlsxFile(objects, {
       schema,
-      filePath: './results/results.xlsx'
+      filePath: filename
    })
 }
 

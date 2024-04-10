@@ -2,16 +2,11 @@
 import { getCsvFile } from './extract.js';
 import { transformItem } from './transform.js';
 import { writeXlsx } from './load.js'
-const spacePad = (num, places) => String(num).padStart(places, ' ')
 
-const FILES = [
-   './csv_files/extract-2024-04-04T17_59_53.297Z.csv',
-];
+const FILES = ['./csv_files/' + process.env.CSV_FILE];
 
 const orchestrateEtlPipeline = async () => {
    try {
-
-      let objectIDs = new Map(); // HashMap to identify SKU non unique across files
 
       // Reset the index
       //await clearIndex();
@@ -59,8 +54,9 @@ const orchestrateEtlPipeline = async () => {
             if (!map[a][tS]) map[a][tS] = 0;
          }
       }
-      console.log(map)
-      writeXlsx(map);
+      console.log(map);
+      const filenameResults = './results/results-' + new Date().toISOString().replaceAll(':', '-') + ".xlsx";
+      writeXlsx(filenameResults, map);
 
    } catch (error) {
       console.error(error);
