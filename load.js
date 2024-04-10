@@ -40,7 +40,7 @@ async function writeXlsx(map) {
 
    await writeXlsxFile(objects, {
       schema,
-      filePath: './results/tests.xlsx'
+      filePath: './results/results.xlsx'
    })
 }
 
